@@ -391,9 +391,9 @@ class Docker(AgentCheck):
         result = self._get_json(
             "%s/events" % instance["url"],
             params={
-                    "until": now,
-                    "since": self._last_event_collection_ts[instance["url"]] or now - 60,
-                   }, multi=True)
+                "until": now,
+                "since": self._last_event_collection_ts[instance["url"]] or now - 60,
+            }, multi=True)
         self._last_event_collection_ts[instance["url"]] = now
         if type(result) == dict:
             result = [result]
