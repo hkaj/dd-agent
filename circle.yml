@@ -1,0 +1,9 @@
+machine:
+  python:
+    version: 2.7.9
+  services:
+    - docker
+
+test:
+  override:
+    - rake ci:run[docker]
