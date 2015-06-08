@@ -4,6 +4,10 @@ machine:
   services:
     - docker
 
+dependencies:
+  pre:
+    - pip install pyro4==4.35
+
 test:
   override:
     - rake ci:run[docker]
