@@ -121,7 +121,6 @@ class UnixSocketHandler(urllib2.AbstractHTTPHandler):
 
 class Docker(AgentCheck):
     """Collect metrics and events from Docker API and cgroups"""
-
     def __init__(self, name, init_config, agentConfig, instances=None):
         AgentCheck.__init__(self, name, init_config, agentConfig, instances)
 
