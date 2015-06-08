@@ -6,7 +6,7 @@ machine:
 
 dependencies:
   pre:
-    - pip install pyro4==4.35
+    - pip install --use-wheel pyro4==4.35
 
 test:
   override:
