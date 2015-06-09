@@ -8,7 +8,7 @@ namespace :ci do
       sh %(docker pull redis:latest)
       sh %(docker pull mongo:latest)
       sh %(docker run -d --name redis -p 6380:6380 redis)
-      sh %(docker run -d --name mongo -p 27017:27017 mongo)
+      sh %(docker run -d --name mongo -p 27018:27018 mongo)
     end
 
     task before_script: ['ci:common:before_script'] do
