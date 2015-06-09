@@ -6,9 +6,9 @@ namespace :ci do
 
     task install: ['ci:common:install'] do
       sh %(docker pull redis:latest)
-      sh %(docker pull mongodb:latest)
+      sh %(docker pull mongo:latest)
       sh %(docker run -d --name redis -p 6379:6379 redis)
-      sh %(docker run -d --name mongodb -p 27017:27017 mongodb)
+      sh %(docker run -d --name mongo -p 27017:27017 mongo)
     end
 
     task before_script: ['ci:common:before_script'] do
@@ -28,8 +28,8 @@ namespace :ci do
     task cleanup: ['ci:common:cleanup'] do
       sh %(docker kill redis)
       sh %(docker rm redis)
-      sh %(docker kill mongodb)
-      sh %(docker rm mongodb)
+      sh %(docker kill mongo)
+      sh %(docker rm mongo)
     end
 
     task :execute do
