@@ -5,8 +5,8 @@ namespace :ci do
     task before_install: ['ci:common:before_install']
 
     task install: ['ci:common:install'] do
-      sh %(docker pull redis)
-      sh %(docker pull mongodb)
+      sh %(docker pull redis:latest)
+      sh %(docker pull mongodb:latest)
       sh %(docker run -d --name redis -p 6379:6379 redis)
       sh %(docker run -d --name mongodb -p 27017:27017 mongodb)
     end
