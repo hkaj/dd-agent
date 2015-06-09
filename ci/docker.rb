@@ -7,7 +7,7 @@ namespace :ci do
     task install: ['ci:common:install'] do
       sh %(docker pull redis:latest)
       sh %(docker pull mongo:latest)
-      sh %(docker run -d --name redis -p 6379:6379 redis)
+      sh %(docker run -d --name redis -p 6380:6380 redis)
       sh %(docker run -d --name mongo -p 27017:27017 mongo)
     end
 
