@@ -3,7 +3,6 @@
 
 require 'rake/clean'
 require 'rubocop/rake_task'
-require './ci/resources/circleci'
 
 # Flavored Travis CI jobs
 require './ci/apache'
