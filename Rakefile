@@ -117,6 +117,14 @@ namespace :ci do
     flavors = flavor.split(',')
     flavors.each { |f| Rake::Task["ci:#{f}:execute"].invoke }
   end
+
+  desc 'Run integration tests in CircleCI'
+  task :run_circle, :flavor do |_, args|
+    puts 'Assuming you are running these tests locally' unless ENV['TRAVIS']
+    flavor = args[:flavor] || ENV['CIRCLECI_FLAVOR'] || 'default'
+    flavors = flavor.split(',')
+    flavors.each { |f| Rake::Task["ci:#{f}:execute"].invoke }
+  end
 end
 
 task default: ['lint', 'ci:run']

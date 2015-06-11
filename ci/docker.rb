@@ -5,6 +5,7 @@ namespace :ci do
     task before_install: ['ci:common:before_install']
 
     task install: ['ci:common:install'] do
+      sh %(sudo apt-get update && sudo apt-get install docker)
       sh %(docker pull redis:latest)
       sh %(docker pull mongo:latest)
       sh %(docker run -d --name redis -p 6380:6380 redis)
