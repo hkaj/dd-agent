@@ -12,4 +12,3 @@ do
   ((i++))
 done
 
-exit 0
