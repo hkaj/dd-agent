@@ -9,7 +9,7 @@ do
   if [ $(($i % $CIRCLE_NODE_TOTAL)) -eq $CIRCLE_NODE_INDEX ]
   then
     rake ci:run_circle[$flavor]
-    if [ $exit_code -ne 0 ] || [ $? -ne 0 ] ; then
+    if [[ $exit_code -ne 0 || $? -ne 0 ]] ; then
       exit_code=1
     fi
   fi
