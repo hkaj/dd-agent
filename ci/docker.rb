@@ -7,6 +7,7 @@ namespace :ci do
     task install: ['ci:common:install'] do
       sh %(sudo apt-get update && sudo apt-get install lxc-docker)
       sh %(sudo addgroup $USER docker)
+      sh %(sudo service docker restart)
       sh %(docker pull redis)
       sh %(docker pull mongo)
       sh %(docker run -d --name redis -p 6380:6380 redis)
