@@ -11,3 +11,5 @@ do
   fi
   ((i++))
 done
+
+exit 0
