@@ -14,4 +14,4 @@ dependencies:
 test:
   override:
     - ./tests/circleci.sh:
-      parallel: true
+        parallel: true
