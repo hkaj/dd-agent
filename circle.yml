@@ -7,9 +7,8 @@ machine:
     CIRCLECI_FLAVORS: docker
 
 dependencies:
-  pre:
-    - pip install --use-wheel pyro4==4.35
-    - bundle install --system
+  override:
+    - bundle install
 
 test:
   override:

@@ -5,9 +5,6 @@ namespace :ci do
     task before_install: ['ci:common:before_install']
 
     task install: ['ci:common:install'] do
-      sh %(sudo apt-get update && sudo apt-get install lxc-docker)
-      sh %(sudo addgroup $USER docker)
-      sh %(sudo service docker restart)
       sh %(docker pull redis)
       sh %(docker pull mongo)
       sh %(docker run -d --name redis -p 6380:6380 redis)
@@ -24,10 +21,6 @@ namespace :ci do
       Rake::Task['ci:common:run_tests'].invoke(this_provides)
     end
 
-    task before_cache: ['ci:common:before_cache']
-
-    task cache: ['ci:common:cache']
-
     task cleanup: ['ci:common:cleanup'] do
       sh %(docker kill redis)
       sh %(docker rm redis)
@@ -38,8 +31,7 @@ namespace :ci do
     task :execute do
       exception = nil
       begin
-        %w(before_install install before_script
-           script before_cache cache).each do |t|
+        %w(before_install install before_script script).each do |t|
           Rake::Task["#{flavor.scope.path}:#{t}"].invoke
         end
       rescue => e
