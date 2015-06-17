@@ -1,6 +1,4 @@
 machine:
-  python:
-    version: 2.7.9
   environment:
     SKIP_CLEANUP: true
     # comma separated list
